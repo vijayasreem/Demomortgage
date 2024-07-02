@@ -15,19 +15,19 @@ public class DocumentVerificationService {
         this.documentVerificationRepository = documentVerificationRepository;
     }
 
-    public DocumentVerification findVerifiedDocument() {
-        return documentVerificationRepository.findVerifiedDocument();
+    public boolean isIdentityAndAddressVerified() {
+        return documentVerificationRepository.isIdentityAndAddressVerified();
     }
 
-    public DocumentVerification findIncompleteDocument() {
-        return documentVerificationRepository.findIncompleteDocument();
+    public boolean isDocumentVerificationIncomplete() {
+        return documentVerificationRepository.isDocumentVerificationIncomplete();
     }
 
-    public DocumentVerification findHighLimitEligible() {
-        return documentVerificationRepository.findHighLimitEligible();
+    public boolean isEligibleForHighLimitCreditScore() {
+        return documentVerificationRepository.isEligibleForHighLimitCreditScore();
     }
 
-    public DocumentVerification findModerateLimitEligible() {
-        return documentVerificationRepository.findModerateLimitEligible();
+    public boolean isEligibleForModerateLimitCreditScore() {
+        return documentVerificationRepository.isEligibleForModerateLimitCreditScore();
     }
 }

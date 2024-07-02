@@ -1,6 +1,5 @@
 package com.sacral.java.controller;
 
-import com.sacral.java.model.DocumentVerification;
 import com.sacral.java.service.DocumentVerificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,23 +17,36 @@ public class DocumentVerificationController {
         this.documentVerificationService = documentVerificationService;
     }
 
-    @GetMapping("/verified")
-    public DocumentVerification findVerifiedDocument() {
-        return documentVerificationService.findVerifiedDocument();
+    @GetMapping("/welcome")
+    public String welcomeMessage() {
+        return "Welcome to the Document Verification App!";
     }
 
-    @GetMapping("/incomplete")
-    public DocumentVerification findIncompleteDocument() {
-        return documentVerificationService.findIncompleteDocument();
+    @GetMapping("/verify-identity-and-address")
+    public String verifyIdentityAndAddress() {
+        boolean isIdentityAndAddressVerified = documentVerificationService.isIdentityAndAddressVerified();
+        if (isIdentityAndAddressVerified) {
+            return "Identity and address verified: Yes";
+        } else {
+            return "Identity and address verified: No";
+        }
     }
 
-    @GetMapping("/high-limit-eligible")
-    public DocumentVerification findHighLimitEligible() {
-        return documentVerificationService.findHighLimitEligible();
-    }
-
-    @GetMapping("/moderate-limit-eligible")
-    public DocumentVerification findModerateLimitEligible() {
-        return documentVerificationService.findModerateLimitEligible();
+    @GetMapping("/verify-eligibility")
+    public String verifyEligibility() {
+        boolean isDocumentVerificationIncomplete = documentVerificationService.isDocumentVerificationIncomplete();
+        if (isDocumentVerificationIncomplete) {
+            return "Document verification incomplete. Not eligible for banking services.";
+        } else {
+            boolean isEligibleForHighLimitCreditScore = documentVerificationService.isEligibleForHighLimitCreditScore();
+            boolean isEligibleForModerateLimitCreditScore = documentVerificationService.isEligibleForModerateLimitCreditScore();
+            if (isEligibleForHighLimitCreditScore) {
+                return "Congratulations! You are eligible for a high-limit credit score.";
+            } else if (isEligibleForModerateLimitCreditScore) {
+                return "You are eligible for a moderate-limit credit score.";
+            } else {
+                return "Not eligible for any credit score.";
+            }
+        }
     }
 }

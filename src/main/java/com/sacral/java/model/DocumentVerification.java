@@ -13,11 +13,8 @@ public class DocumentVerification {
     private Long id;
     
     private boolean identityVerified;
-    
     private boolean addressVerified;
-    
     private int annualIncome;
-    
     private int creditScore;
     
     // Getters and Setters

@@ -17,12 +17,6 @@ public class LoanApplicationService {
         this.loanApplicationRepository = loanApplicationRepository;
     }
 
-    // Custom queries for loan application
-
-    public LoanApplication findByCustomerId(Long customerId) {
-        return loanApplicationRepository.findByCustomerId(customerId);
-    }
-
     public List<LoanApplication> findPendingApplications() {
         return loanApplicationRepository.findPendingApplications();
     }
@@ -35,37 +29,22 @@ public class LoanApplicationService {
         return loanApplicationRepository.findRejectedApplications();
     }
 
-    // Other required methods
-
-    public List<LoanApplication> findByLoanAmountGreaterThan(double amount) {
-        return loanApplicationRepository.findByLoanAmountGreaterThan(amount);
+    public List<LoanApplication> findApplicationsByCustomerId(Long customerId) {
+        return loanApplicationRepository.findApplicationsByCustomerId(customerId);
     }
 
-    public List<LoanApplication> findByLoanAmountLessThan(double amount) {
-        return loanApplicationRepository.findByLoanAmountLessThan(amount);
+    public List<LoanApplication> findApplicationsByVehicleMake(String make) {
+        return loanApplicationRepository.findApplicationsByVehicleMake(make);
     }
 
-    public List<LoanApplication> findByLoanAmountBetween(double minAmount, double maxAmount) {
-        return loanApplicationRepository.findByLoanAmountBetween(minAmount, maxAmount);
+    public List<LoanApplication> findApplicationsByVehicleModel(String model) {
+        return loanApplicationRepository.findApplicationsByVehicleModel(model);
     }
 
-    public List<LoanApplication> findByStatus(String status) {
-        return loanApplicationRepository.findByStatus(status);
+    public List<LoanApplication> findApplicationsByVehicleYear(int year) {
+        return loanApplicationRepository.findApplicationsByVehicleYear(year);
     }
 
-    public List<LoanApplication> findByCustomerIdAndStatus(Long customerId, String status) {
-        return loanApplicationRepository.findByCustomerIdAndStatus(customerId, status);
-    }
+    // Add more business methods as needed
 
-    public List<LoanApplication> findByCustomerIdAndLoanAmountGreaterThan(Long customerId, double amount) {
-        return loanApplicationRepository.findByCustomerIdAndLoanAmountGreaterThan(customerId, amount);
-    }
-
-    public List<LoanApplication> findByCustomerIdAndLoanAmountLessThan(Long customerId, double amount) {
-        return loanApplicationRepository.findByCustomerIdAndLoanAmountLessThan(customerId, amount);
-    }
-
-    public List<LoanApplication> findByCustomerIdAndLoanAmountBetween(Long customerId, double minAmount, double maxAmount) {
-        return loanApplicationRepository.findByCustomerIdAndLoanAmountBetween(customerId, minAmount, maxAmount);
-    }
 }

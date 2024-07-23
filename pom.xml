@@ -8,12 +8,12 @@
 		<version>3.3.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.sacral.java</groupId>
-	<artifactId>SAC-152</artifactId>
+	<groupId>com.sacral</groupId>
+	<artifactId>SAC-151</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>Demo</name>
-	<description>Demo</description>
+	<name>Demo10</name>
+	<description>Demo10</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -41,8 +41,8 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>

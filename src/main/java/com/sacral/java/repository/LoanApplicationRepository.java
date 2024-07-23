@@ -9,11 +9,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LoanApplicationRepository extends JpaRepository<LoanApplication, Long> {
 
-    // Custom queries for loan application
-
-    @Query("SELECT la FROM LoanApplication la WHERE la.customerId = ?1")
-    LoanApplication findByCustomerId(Long customerId);
-
     @Query("SELECT la FROM LoanApplication la WHERE la.status = 'PENDING'")
     List<LoanApplication> findPendingApplications();
 
@@ -23,22 +18,18 @@ public interface LoanApplicationRepository extends JpaRepository<LoanApplication
     @Query("SELECT la FROM LoanApplication la WHERE la.status = 'REJECTED'")
     List<LoanApplication> findRejectedApplications();
 
-    // Other required methods
+    @Query("SELECT la FROM LoanApplication la WHERE la.customerId = :customerId")
+    List<LoanApplication> findApplicationsByCustomerId(Long customerId);
 
-    List<LoanApplication> findByLoanAmountGreaterThan(double amount);
+    @Query("SELECT la FROM LoanApplication la WHERE la.vehicleMake = :make")
+    List<LoanApplication> findApplicationsByVehicleMake(String make);
 
-    List<LoanApplication> findByLoanAmountLessThan(double amount);
+    @Query("SELECT la FROM LoanApplication la WHERE la.vehicleModel = :model")
+    List<LoanApplication> findApplicationsByVehicleModel(String model);
 
-    List<LoanApplication> findByLoanAmountBetween(double minAmount, double maxAmount);
+    @Query("SELECT la FROM LoanApplication la WHERE la.vehicleYear = :year")
+    List<LoanApplication> findApplicationsByVehicleYear(int year);
 
-    List<LoanApplication> findByStatus(String status);
-
-    List<LoanApplication> findByCustomerIdAndStatus(Long customerId, String status);
-
-    List<LoanApplication> findByCustomerIdAndLoanAmountGreaterThan(Long customerId, double amount);
-
-    List<LoanApplication> findByCustomerIdAndLoanAmountLessThan(Long customerId, double amount);
-
-    List<LoanApplication> findByCustomerIdAndLoanAmountBetween(Long customerId, double minAmount, double maxAmount);
+    // Add more custom queries as needed
 
 }

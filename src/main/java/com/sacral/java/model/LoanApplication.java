@@ -8,14 +8,14 @@ import javax.persistence.Id;
 
 @Entity
 public class LoanApplication {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    private Long customerId;
-    private double loanAmount;
     private String status;
+    private Long customerId;
+    private String vehicleMake;
+    private String vehicleModel;
+    private int vehicleYear;
 
     // Getters and Setters
 
@@ -27,6 +27,14 @@ public class LoanApplication {
         this.id = id;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Long getCustomerId() {
         return customerId;
     }
@@ -35,19 +43,27 @@ public class LoanApplication {
         this.customerId = customerId;
     }
 
-    public double getLoanAmount() {
-        return loanAmount;
+    public String getVehicleMake() {
+        return vehicleMake;
     }
 
-    public void setLoanAmount(double loanAmount) {
-        this.loanAmount = loanAmount;
+    public void setVehicleMake(String vehicleMake) {
+        this.vehicleMake = vehicleMake;
     }
 
-    public String getStatus() {
-        return status;
+    public String getVehicleModel() {
+        return vehicleModel;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setVehicleModel(String vehicleModel) {
+        this.vehicleModel = vehicleModel;
+    }
+
+    public int getVehicleYear() {
+        return vehicleYear;
+    }
+
+    public void setVehicleYear(int vehicleYear) {
+        this.vehicleYear = vehicleYear;
     }
 }

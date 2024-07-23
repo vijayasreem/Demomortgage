@@ -18,11 +18,6 @@ public class LoanApplicationController {
         this.loanApplicationService = loanApplicationService;
     }
 
-    @GetMapping("/customer/{customerId}")
-    public LoanApplication findByCustomerId(@PathVariable Long customerId) {
-        return loanApplicationService.findByCustomerId(customerId);
-    }
-
     @GetMapping("/pending")
     public List<LoanApplication> findPendingApplications() {
         return loanApplicationService.findPendingApplications();
@@ -38,48 +33,26 @@ public class LoanApplicationController {
         return loanApplicationService.findRejectedApplications();
     }
 
-    @GetMapping("/amount-greater-than/{amount}")
-    public List<LoanApplication> findByLoanAmountGreaterThan(@PathVariable double amount) {
-        return loanApplicationService.findByLoanAmountGreaterThan(amount);
+    @GetMapping("/customer/{customerId}")
+    public List<LoanApplication> findApplicationsByCustomerId(@PathVariable Long customerId) {
+        return loanApplicationService.findApplicationsByCustomerId(customerId);
     }
 
-    @GetMapping("/amount-less-than/{amount}")
-    public List<LoanApplication> findByLoanAmountLessThan(@PathVariable double amount) {
-        return loanApplicationService.findByLoanAmountLessThan(amount);
+    @GetMapping("/vehicle/make/{make}")
+    public List<LoanApplication> findApplicationsByVehicleMake(@PathVariable String make) {
+        return loanApplicationService.findApplicationsByVehicleMake(make);
     }
 
-    @GetMapping("/amount-between/{minAmount}/{maxAmount}")
-    public List<LoanApplication> findByLoanAmountBetween(@PathVariable double minAmount, @PathVariable double maxAmount) {
-        return loanApplicationService.findByLoanAmountBetween(minAmount, maxAmount);
+    @GetMapping("/vehicle/model/{model}")
+    public List<LoanApplication> findApplicationsByVehicleModel(@PathVariable String model) {
+        return loanApplicationService.findApplicationsByVehicleModel(model);
     }
 
-    @GetMapping("/status/{status}")
-    public List<LoanApplication> findByStatus(@PathVariable String status) {
-        return loanApplicationService.findByStatus(status);
+    @GetMapping("/vehicle/year/{year}")
+    public List<LoanApplication> findApplicationsByVehicleYear(@PathVariable int year) {
+        return loanApplicationService.findApplicationsByVehicleYear(year);
     }
 
-    @GetMapping("/customer/{customerId}/status/{status}")
-    public List<LoanApplication> findByCustomerIdAndStatus(@PathVariable Long customerId, @PathVariable String status) {
-        return loanApplicationService.findByCustomerIdAndStatus(customerId, status);
-    }
-
-    @GetMapping("/customer/{customerId}/amount-greater-than/{amount}")
-    public List<LoanApplication> findByCustomerIdAndLoanAmountGreaterThan(@PathVariable Long customerId, @PathVariable double amount) {
-        return loanApplicationService.findByCustomerIdAndLoanAmountGreaterThan(customerId, amount);
-    }
-
-    @GetMapping("/customer/{customerId}/amount-less-than/{amount}")
-    public List<LoanApplication> findByCustomerIdAndLoanAmountLessThan(@PathVariable Long customerId, @PathVariable double amount) {
-        return loanApplicationService.findByCustomerIdAndLoanAmountLessThan(customerId, amount);
-    }
-
-    @GetMapping("/customer/{customerId}/amount-between/{minAmount}/{maxAmount}")
-    public List<LoanApplication> findByCustomerIdAndLoanAmountBetween(@PathVariable Long customerId, @PathVariable double minAmount, @PathVariable double maxAmount) {
-        return loanApplicationService.findByCustomerIdAndLoanAmountBetween(customerId, minAmount, maxAmount);
-    }
-
-    // Other required methods and their implementations
-
-    // Add your business methods here
+    // Add more business methods as needed
 
 }

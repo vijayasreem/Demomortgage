@@ -5,6 +5,7 @@ import com.sacral.java.repository.LoanApplicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -17,34 +18,83 @@ public class LoanApplicationService {
         this.loanApplicationRepository = loanApplicationRepository;
     }
 
-    public List<LoanApplication> findPendingApplications() {
-        return loanApplicationRepository.findPendingApplications();
+    // Custom queries for loan application
+
+    public List<LoanApplication> findByCustomerId(Long customerId) {
+        return loanApplicationRepository.findByCustomerId(customerId);
     }
 
-    public List<LoanApplication> findApprovedApplications() {
-        return loanApplicationRepository.findApprovedApplications();
+    public List<LoanApplication> findByStatus(String status) {
+        return loanApplicationRepository.findByStatus(status);
     }
 
-    public List<LoanApplication> findRejectedApplications() {
-        return loanApplicationRepository.findRejectedApplications();
+    public List<LoanApplication> findByLoanAmountRange(Double minAmount, Double maxAmount) {
+        return loanApplicationRepository.findByLoanAmountRange(minAmount, maxAmount);
     }
 
-    public List<LoanApplication> findApplicationsByCustomerId(Long customerId) {
-        return loanApplicationRepository.findApplicationsByCustomerId(customerId);
+    // Other required methods
+
+    public LoanApplication findByApplicationId(Long applicationId) {
+        return loanApplicationRepository.findByApplicationId(applicationId);
     }
 
-    public List<LoanApplication> findApplicationsByVehicleMake(String make) {
-        return loanApplicationRepository.findApplicationsByVehicleMake(make);
+    public LoanApplication findByApplicationNumber(String applicationNumber) {
+        return loanApplicationRepository.findByApplicationNumber(applicationNumber);
     }
 
-    public List<LoanApplication> findApplicationsByVehicleModel(String model) {
-        return loanApplicationRepository.findApplicationsByVehicleModel(model);
+    public List<LoanApplication> findByCustomerName(String customerName) {
+        return loanApplicationRepository.findByCustomerName(customerName);
     }
 
-    public List<LoanApplication> findApplicationsByVehicleYear(int year) {
-        return loanApplicationRepository.findApplicationsByVehicleYear(year);
+    public List<LoanApplication> findByCustomerEmail(String customerEmail) {
+        return loanApplicationRepository.findByCustomerEmail(customerEmail);
     }
 
-    // Add more business methods as needed
+    public List<LoanApplication> findByCustomerPhone(String customerPhone) {
+        return loanApplicationRepository.findByCustomerPhone(customerPhone);
+    }
 
+    public List<LoanApplication> findByEmploymentDetails(String employmentDetails) {
+        return loanApplicationRepository.findByEmploymentDetails(employmentDetails);
+    }
+
+    public List<LoanApplication> findByLoanType(String loanType) {
+        return loanApplicationRepository.findByLoanType(loanType);
+    }
+
+    public List<LoanApplication> findByLoanTerm(Integer loanTerm) {
+        return loanApplicationRepository.findByLoanTerm(loanTerm);
+    }
+
+    public List<LoanApplication> findByLoanStatus(String loanStatus) {
+        return loanApplicationRepository.findByLoanStatus(loanStatus);
+    }
+
+    public List<LoanApplication> findByApprovalStatus(String approvalStatus) {
+        return loanApplicationRepository.findByApprovalStatus(approvalStatus);
+    }
+
+    public List<LoanApplication> findByRejectionReason(String rejectionReason) {
+        return loanApplicationRepository.findByRejectionReason(rejectionReason);
+    }
+
+    public List<LoanApplication> findBySubmittedDate(Date submittedDate) {
+        return loanApplicationRepository.findBySubmittedDate(submittedDate);
+    }
+
+    public List<LoanApplication> findByApprovedDate(Date approvedDate) {
+        return loanApplicationRepository.findByApprovedDate(approvedDate);
+    }
+
+    public List<LoanApplication> findByRejectedDate(Date rejectedDate) {
+        return loanApplicationRepository.findByRejectedDate(rejectedDate);
+    }
+
+    public List<LoanApplication> findByClosedDate(Date closedDate) {
+        return loanApplicationRepository.findByClosedDate(closedDate);
+    }
+
+    public List<LoanApplication> findByLastModifiedDate(Date lastModifiedDate) {
+        return loanApplicationRepository.findByLastModifiedDate(lastModifiedDate);
+    }
 }

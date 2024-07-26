@@ -9,27 +9,49 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LoanApplicationRepository extends JpaRepository<LoanApplication, Long> {
 
-    @Query("SELECT la FROM LoanApplication la WHERE la.status = 'PENDING'")
-    List<LoanApplication> findPendingApplications();
-
-    @Query("SELECT la FROM LoanApplication la WHERE la.status = 'APPROVED'")
-    List<LoanApplication> findApprovedApplications();
-
-    @Query("SELECT la FROM LoanApplication la WHERE la.status = 'REJECTED'")
-    List<LoanApplication> findRejectedApplications();
+    // Custom queries for loan application
 
     @Query("SELECT la FROM LoanApplication la WHERE la.customerId = :customerId")
-    List<LoanApplication> findApplicationsByCustomerId(Long customerId);
+    List<LoanApplication> findByCustomerId(Long customerId);
 
-    @Query("SELECT la FROM LoanApplication la WHERE la.vehicleMake = :make")
-    List<LoanApplication> findApplicationsByVehicleMake(String make);
+    @Query("SELECT la FROM LoanApplication la WHERE la.status = :status")
+    List<LoanApplication> findByStatus(String status);
 
-    @Query("SELECT la FROM LoanApplication la WHERE la.vehicleModel = :model")
-    List<LoanApplication> findApplicationsByVehicleModel(String model);
+    @Query("SELECT la FROM LoanApplication la WHERE la.loanAmount >= :minAmount AND la.loanAmount <= :maxAmount")
+    List<LoanApplication> findByLoanAmountRange(Double minAmount, Double maxAmount);
 
-    @Query("SELECT la FROM LoanApplication la WHERE la.vehicleYear = :year")
-    List<LoanApplication> findApplicationsByVehicleYear(int year);
+    // Other required methods
 
-    // Add more custom queries as needed
+    LoanApplication findByApplicationId(Long applicationId);
+
+    LoanApplication findByApplicationNumber(String applicationNumber);
+
+    List<LoanApplication> findByCustomerName(String customerName);
+
+    List<LoanApplication> findByCustomerEmail(String customerEmail);
+
+    List<LoanApplication> findByCustomerPhone(String customerPhone);
+
+    List<LoanApplication> findByEmploymentDetails(String employmentDetails);
+
+    List<LoanApplication> findByLoanType(String loanType);
+
+    List<LoanApplication> findByLoanTerm(Integer loanTerm);
+
+    List<LoanApplication> findByLoanStatus(String loanStatus);
+
+    List<LoanApplication> findByApprovalStatus(String approvalStatus);
+
+    List<LoanApplication> findByRejectionReason(String rejectionReason);
+
+    List<LoanApplication> findBySubmittedDate(Date submittedDate);
+
+    List<LoanApplication> findByApprovedDate(Date approvedDate);
+
+    List<LoanApplication> findByRejectedDate(Date rejectedDate);
+
+    List<LoanApplication> findByClosedDate(Date closedDate);
+
+    List<LoanApplication> findByLastModifiedDate(Date lastModifiedDate);
 
 }

@@ -1,21 +1,67 @@
 
 package com.sacral.java.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
+@Table(name = "loan_application")
 public class LoanApplication {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String status;
-    private Long customerId;
-    private String vehicleMake;
-    private String vehicleModel;
-    private int vehicleYear;
+
+    @Column(name = "application_id")
+    private Long applicationId;
+
+    @Column(name = "application_number")
+    private String applicationNumber;
+
+    @Column(name = "customer_name")
+    private String customerName;
+
+    @Column(name = "customer_email")
+    private String customerEmail;
+
+    @Column(name = "customer_phone")
+    private String customerPhone;
+
+    @Column(name = "employment_details")
+    private String employmentDetails;
+
+    @Column(name = "loan_type")
+    private String loanType;
+
+    @Column(name = "loan_term")
+    private Integer loanTerm;
+
+    @Column(name = "loan_status")
+    private String loanStatus;
+
+    @Column(name = "approval_status")
+    private String approvalStatus;
+
+    @Column(name = "rejection_reason")
+    private String rejectionReason;
+
+    @Column(name = "submitted_date")
+    private Date submittedDate;
+
+    @Column(name = "approved_date")
+    private Date approvedDate;
+
+    @Column(name = "rejected_date")
+    private Date rejectedDate;
+
+    @Column(name = "closed_date")
+    private Date closedDate;
+
+    @Column(name = "last_modified_date")
+    private Date lastModifiedDate;
+
+    @Column(name = "loan_amount")
+    private Double loanAmount;
 
     // Getters and Setters
 
@@ -27,43 +73,139 @@ public class LoanApplication {
         this.id = id;
     }
 
-    public String getStatus() {
-        return status;
+    public Long getApplicationId() {
+        return applicationId;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setApplicationId(Long applicationId) {
+        this.applicationId = applicationId;
     }
 
-    public Long getCustomerId() {
-        return customerId;
+    public String getApplicationNumber() {
+        return applicationNumber;
     }
 
-    public void setCustomerId(Long customerId) {
-        this.customerId = customerId;
+    public void setApplicationNumber(String applicationNumber) {
+        this.applicationNumber = applicationNumber;
     }
 
-    public String getVehicleMake() {
-        return vehicleMake;
+    public String getCustomerName() {
+        return customerName;
     }
 
-    public void setVehicleMake(String vehicleMake) {
-        this.vehicleMake = vehicleMake;
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
     }
 
-    public String getVehicleModel() {
-        return vehicleModel;
+    public String getCustomerEmail() {
+        return customerEmail;
     }
 
-    public void setVehicleModel(String vehicleModel) {
-        this.vehicleModel = vehicleModel;
+    public void setCustomerEmail(String customerEmail) {
+        this.customerEmail = customerEmail;
     }
 
-    public int getVehicleYear() {
-        return vehicleYear;
+    public String getCustomerPhone() {
+        return customerPhone;
     }
 
-    public void setVehicleYear(int vehicleYear) {
-        this.vehicleYear = vehicleYear;
+    public void setCustomerPhone(String customerPhone) {
+        this.customerPhone = customerPhone;
+    }
+
+    public String getEmploymentDetails() {
+        return employmentDetails;
+    }
+
+    public void setEmploymentDetails(String employmentDetails) {
+        this.employmentDetails = employmentDetails;
+    }
+
+    public String getLoanType() {
+        return loanType;
+    }
+
+    public void setLoanType(String loanType) {
+        this.loanType = loanType;
+    }
+
+    public Integer getLoanTerm() {
+        return loanTerm;
+    }
+
+    public void setLoanTerm(Integer loanTerm) {
+        this.loanTerm = loanTerm;
+    }
+
+    public String getLoanStatus() {
+        return loanStatus;
+    }
+
+    public void setLoanStatus(String loanStatus) {
+        this.loanStatus = loanStatus;
+    }
+
+    public String getApprovalStatus() {
+        return approvalStatus;
+    }
+
+    public void setApprovalStatus(String approvalStatus) {
+        this.approvalStatus = approvalStatus;
+    }
+
+    public String getRejectionReason() {
+        return rejectionReason;
+    }
+
+    public void setRejectionReason(String rejectionReason) {
+        this.rejectionReason = rejectionReason;
+    }
+
+    public Date getSubmittedDate() {
+        return submittedDate;
+    }
+
+    public void setSubmittedDate(Date submittedDate) {
+        this.submittedDate = submittedDate;
+    }
+
+    public Date getApprovedDate() {
+        return approvedDate;
+    }
+
+    public void setApprovedDate(Date approvedDate) {
+        this.approvedDate = approvedDate;
+    }
+
+    public Date getRejectedDate() {
+        return rejectedDate;
+    }
+
+    public void setRejectedDate(Date rejectedDate) {
+        this.rejectedDate = rejectedDate;
+    }
+
+    public Date getClosedDate() {
+        return closedDate;
+    }
+
+    public void setClosedDate(Date closedDate) {
+        this.closedDate = closedDate;
+    }
+
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
+    }
+
+    public Double getLoanAmount() {
+        return loanAmount;
+    }
+
+    public void setLoanAmount(Double loanAmount) {
+        this.loanAmount = loanAmount;
     }
 }

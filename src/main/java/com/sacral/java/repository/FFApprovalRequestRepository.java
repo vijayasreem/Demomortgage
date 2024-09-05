@@ -1,26 +1,26 @@
 
 package com.sacral.java.repository;
 
-import com.sacral.java.model.FFApprovalRequest;
+import com.sacral.java.entity.FFApprovalRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public interface FFApprovalRequestRepository extends JpaRepository<FFApprovalRequest, Long> {
 
-    @Query("SELECT f FROM FFApprovalRequest f WHERE f.status = 'F&F Approval Pending with QC2'")
+    @Query("SELECT r FROM FFApprovalRequest r WHERE r.status = 'F&F Approval Pending with QC2'")
     List<FFApprovalRequest> findPendingRequests();
 
-    @Query("SELECT f FROM FFApprovalRequest f WHERE f.status = 'F&F Approval Pending with QC2' AND f.id = :id")
-    FFApprovalRequest findPendingRequestById(Long id);
+    @Query("UPDATE FFApprovalRequest r SET r.status = :status WHERE r.id = :id")
+    void updateStatus(@Param("id") Long id, @Param("status") String status);
 
-    @Query("SELECT f FROM FFApprovalRequest f WHERE f.status = 'F&F Approval Pending with QC2' AND f.remarks LIKE %:keyword%")
-    List<FFApprovalRequest> searchPendingRequestsByRemarks(String keyword);
+    @Query("SELECT r FROM FFApprovalRequest r WHERE r.qc2ManagerId = :managerId")
+    List<FFApprovalRequest> findRequestsByManager(@Param("managerId") Long managerId);
 
-    @Query("SELECT f FROM FFApprovalRequest f WHERE f.status = 'F&F Approval Pending with QC2' AND f.remarks LIKE %:keyword% AND f.createdBy = :createdBy")
-    List<FFApprovalRequest> searchPendingRequestsByRemarksAndCreatedBy(String keyword, String createdBy);
-
-    // Add more custom queries as needed
-
+    @Query("UPDATE FFApprovalRequest r SET r.qc2Remarks = :remarks, r.status = :status WHERE r.id = :id")
+    void updateRemarksAndStatus(@Param("id") Long id, @Param("remarks") String remarks, @Param("status") String status);
 }
